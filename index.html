@@ -3,122 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WrongHub - Photo Sharing Platform</title>
-    <meta name="description" content="Share and discover amazing photos on WrongHub">
+    <title>WrongHub - Video Streaming Platform</title>
+    <meta name="description" content="Video Streaming Platform">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="popup-ad.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.462.0/lucide.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">
-                <h1><span class="logo-wrong">Wrong</span><span class="logo-hub">Hub</span></h1>
-                <p class="tagline">Share Your Moments</p>
+    <div id="app">
+        <!-- Header -->
+        <header class="header" id="header">
+            <!-- Mobile Layout -->
+            <div class="mobile-header">
+                <div class="mobile-header-row">
+                    <button id="menu-btn" class="menu-btn" type="button" aria-label="Toggle menu">☰</button>
+                    <div class="logo" onclick="showPage('home')">
+                        <h1>
+                            <span class="logo-wrong">Wrong</span><span class="logo-hub">Hub</span>
+                        </h1>
+                    </div>
+                    <button class="btn-yellow mobile-signin" type="button" onclick="window.open('https://www.profitableratecpm.com/ws7waxqy?key=ce86f810365211c634a1f1aed525f736', '_blank')">Sign In</button>
+                </div>
+                <div class="mobile-search-row">
+                    <div class="search-container">
+                        <input type="text" id="search-input" placeholder="Search videos..." class="search-input">
+                        <button id="search-btn" class="search-btn" type="button" aria-label="Search">🔍</button>
+                    </div>
+                </div>
             </div>
             
-            <!-- Header Ad - Desktop -->
-            <div class="header-ad desktop-only">
-                <script type="text/javascript">
-                    atOptions = {
-                        'key' : '23632d040e9ace3cb20615242d28bebd',
-                        'format' : 'iframe',
-                        'height' : 90,
-                        'width' : 728,
-                        'params' : {}
-                    };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/23632d040e9ace3cb20615242d28bebd/invoke.js"></script>
-            </div>
-            
-            <!-- Header Ad - Mobile -->
-            <div class="header-ad mobile-only">
-                <script type="text/javascript">
-                    atOptions = {
-                        'key' : '2483c8ff110bc0a32bcb87316e68fe3b',
-                        'format' : 'iframe',
-                        'height' : 50,
-                        'width' : 320,
-                        'params' : {}
-                    };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/2483c8ff110bc0a32bcb87316e68fe3b/invoke.js"></script>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <!-- Upload Section -->
-            <section class="upload-section">
-                <div class="upload-container">
-                    <input type="file" id="imageInput" accept="image/*" class="file-input">
-                    <label for="imageInput" class="upload-btn">
-                        <i class="fas fa-camera"></i>
-                        <span>Upload Photo</span>
-                    </label>
-                </div>
-                
-                <!-- Upload Progress -->
-                <div id="uploadProgress" class="upload-progress" style="display: none;">
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                    </div>
-                    <span class="progress-text">Uploading...</span>
-                </div>
-            </section>
-
-            <!-- Sorting Controls -->
-            <section class="controls-section">
-                <div class="sort-controls">
-                    <button id="sortNewest" class="sort-btn active">
-                        <i class="fas fa-clock"></i>
-                        Newest First
-                    </button>
-                    <button id="sortPopular" class="sort-btn">
-                        <i class="fas fa-fire"></i>
-                        Most Popular
-                    </button>
-                </div>
-                
-                <div class="stats">
-                    <span id="photoCount">0 photos</span>
-                </div>
-            </section>
-
-            <!-- Top Banner Ad -->
-            <div class="top-banner-ad">
-                <script type="text/javascript">
-                    atOptions = {
-                        'key' : '750f82bb6dfa9c1950bb6b2f534e9100',
-                        'format' : 'iframe',
-                        'height' : 60,
-                        'width' : 468,
-                        'params' : {}
-                    };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/750f82bb6dfa9c1950bb6b2f534e9100/invoke.js"></script>
-            </div>
-
-            <!-- Photo Gallery -->
-            <section class="gallery-section">
-                <div class="gallery-container">
-                    <div id="photoGallery" class="photo-gallery">
-                        <!-- Photos will be dynamically inserted here -->
-                    </div>
-                    
-                    <!-- Empty State -->
-                    <div id="emptyState" class="empty-state">
-                        <i class="fas fa-images"></i>
-                        <h3>No photos yet</h3>
-                        <p>Upload your first photo to get started!</p>
+            <!-- Desktop Layout -->
+            <div class="desktop-header">
+                <div class="header-left">
+                    <button id="menu-btn-desktop" class="menu-btn" type="button" aria-label="Toggle menu">☰</button>
+                    <div class="logo" onclick="showPage('home')">
+                        <h1>
+                            <span class="logo-wrong">Wrong</span><span class="logo-hub">Hub</span>
+                        </h1>
                     </div>
                 </div>
-                
-                <!-- Sidebar Ad - Desktop -->
-                <aside class="sidebar-ad desktop-only">
-                    <div class="ad-space">
+                <div class="header-center">
+                    <div class="search-container">
+                        <input type="text" id="search-input-desktop" placeholder="Search videos..." class="search-input">
+                        <button id="search-btn-desktop" class="search-btn" type="button" aria-label="Search">🔍</button>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button class="btn-yellow" type="button" onclick="window.open('https://www.profitableratecpm.com/ws7waxqy?key=ce86f810365211c634a1f1aed525f736', '_blank')">Sign In</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <nav id="sidebar" class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="#" data-page="home" class="active">🏠 Home</a></li>
+                <li><a href="#" data-page="trending">📈 Trending</a></li>
+                <li><a href="#" data-page="subscriptions">📺 Subscriptions</a></li>
+                <li><a href="#" data-page="library">📚 Library</a></li>
+            </ul>
+            <!-- Sidebar Ads -->
+            <div class="sidebar-ads-container">
+                <div id="sidebar-ad-300x250" class="ad-space sidebar-ad-primary">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '9258e0377a9e583db2075fcb66f881bf',
+                            'format' : 'iframe',
+                            'height' : 250,
+                            'width' : 300,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/9258e0377a9e583db2075fcb66f881bf/invoke.js"></script>
+                </div>
+                <div id="sidebar-skyscraper-container" class="desktop-only">
+                    <div id="sidebar-skyscraper" class="ad-space">
                         <script type="text/javascript">
                             atOptions = {
                                 'key' : '6f68c1a21f3332447aaea9b8b4fd6ec7',
@@ -130,85 +90,289 @@
                         </script>
                         <script type="text/javascript" src="//www.highperformanceformat.com/6f68c1a21f3332447aaea9b8b4fd6ec7/invoke.js"></script>
                     </div>
+                </div>
+                <div id="sidebar-medium" class="ad-space sidebar-ad-medium">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '4acf10535b41ab941d3298879deffbb3',
+                            'format' : 'iframe',
+                            'height' : 300,
+                            'width' : 160,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/4acf10535b41ab941d3298879deffbb3/invoke.js"></script>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main id="main-content" class="main-content">
+            <!-- Home Page -->
+            <div id="home-page" class="page active">
+                <div class="content-wrapper">
+                    <!-- Header Ad -->
+                    <div class="header-ad-container">
+                        <div class="block md:hidden">
+                            <script type="text/javascript">
+                                atOptions = {
+                                    'key' : '2483c8ff110bc0a32bcb87316e68fe3b',
+                                    'format' : 'iframe',
+                                    'height' : 50,
+                                    'width' : 320,
+                                    'params' : {}
+                                };
+                            </script>
+                            <script type="text/javascript" src="//www.highperformanceformat.com/2483c8ff110bc0a32bcb87316e68fe3b/invoke.js"></script>
+                        </div>
+                    </div>
                     
-                    <div class="ad-space">
+                    <div class="video-grid" id="video-grid">
+                        <!-- Videos will be loaded here -->
+                    </div>
+                    
+                    <div class="pre-load-ad">
+                        <div id="pre-load-ad-space" class="ad-space" data-size="468x60">
+                            <script type="text/javascript">
+                                atOptions = {
+                                    'key' : '750f82bb6dfa9c1950bb6b2f534e9100',
+                                    'format' : 'iframe',
+                                    'height' : 60,
+                                    'width' : 468,
+                                    'params' : {}
+                                };
+                            </script>
+                            <script type="text/javascript" src="//www.highperformanceformat.com/750f82bb6dfa9c1950bb6b2f534e9100/invoke.js"></script>
+                        </div>
+                    </div>
+                    
+                    <div class="load-more-container">
+                        <button id="load-more-btn" class="btn-yellow pulse-animation" type="button">Load More Videos</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Results Page -->
+            <div id="search-results-page" class="page">
+                <div class="content-wrapper">
+                    <div class="search-header">
+                        <button id="back-to-home" class="btn-yellow back-btn" onclick="showPage('home')" type="button">← Back to Home</button>
+                        <h1 class="page-title" id="search-results-title">Search Results</h1>
+                    </div>
+                    
+                    <!-- Search Results Ad -->
+                    <div class="search-ad-container">
                         <script type="text/javascript">
                             atOptions = {
-                                'key' : '4acf10535b41ab941d3298879deffbb3',
+                                'key' : '23632d040e9ace3cb20615242d28bebd',
                                 'format' : 'iframe',
-                                'height' : 300,
-                                'width' : 160,
+                                'height' : 90,
+                                'width' : 728,
                                 'params' : {}
                             };
                         </script>
-                        <script type="text/javascript" src="//www.highperformanceformat.com/4acf10535b41ab941d3298879deffbb3/invoke.js"></script>
+                        <script type="text/javascript" src="//www.highperformanceformat.com/23632d040e9ace3cb20615242d28bebd/invoke.js"></script>
                     </div>
-                </aside>
-            </section>
-
-            <!-- Bottom Banner Ad -->
-            <div class="bottom-banner-ad">
-                <script type="text/javascript">
-                    atOptions = {
-                        'key' : '23632d040e9ace3cb20615242d28bebd',
-                        'format' : 'iframe',
-                        'height' : 90,
-                        'width' : 728,
-                        'params' : {}
-                    };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/23632d040e9ace3cb20615242d28bebd/invoke.js"></script>
+                    
+                    <div class="video-grid" id="search-results-grid">
+                        <!-- Search results will be loaded here -->
+                    </div>
+                    
+                    <div id="no-results" class="no-results" style="display: none;">
+                        <h2>No videos found</h2>
+                        <p>Try different keywords or browse our trending videos.</p>
+                        <div class="no-results-actions">
+                            <a href="https://www.profitableratecpm.com/ws7waxqy?key=ce86f810365211c634a1f1aed525f736" target="_blank" class="btn-yellow">Explore More</a>
+                            <button class="btn-yellow" onclick="showPage('trending')" type="button">Browse Trending</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
+            <!-- Video Player Page -->
+            <div id="video-player-page" class="page">
+                <div class="video-player-wrapper">
+                    <button id="back-btn" class="btn-yellow back-btn fade-in" onclick="showPage('home')" type="button">← Back to Home</button>
+                    
+                    <!-- Above Video Ad -->
+                    <div class="above-video-ad">
+                        <div id="above-video-ad" class="ad-space" data-size="728x90">
+                            <script type="text/javascript">
+                                atOptions = {
+                                    'key' : '23632d040e9ace3cb20615242d28bebd',
+                                    'format' : 'iframe',
+                                    'height' : 90,
+                                    'width' : 728,
+                                    'params' : {}
+                                };
+                            </script>
+                            <script type="text/javascript" src="//www.highperformanceformat.com/23632d040e9ace3cb20615242d28bebd/invoke.js"></script>
+                        </div>
+                    </div>
+                    
+                    <div class="video-player-container">
+                        <div class="video-content-row">
+                            <div class="video-player">
+                                <iframe id="video-iframe" src="" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            
+                            <div class="beside-video-ad desktop-only">
+                                <div id="beside-video-ad" class="ad-space" data-size="300x250">
+                                    <script type="text/javascript">
+                                        atOptions = {
+                                            'key' : '9258e0377a9e583db2075fcb66f881bf',
+                                            'format' : 'iframe',
+                                            'height' : 250,
+                                            'width' : 300,
+                                            'params' : {}
+                                        };
+                                    </script>
+                                    <script type="text/javascript" src="//www.highperformanceformat.com/9258e0377a9e583db2075fcb66f881bf/invoke.js"></script>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="download-container">
+                            <a href="https://www.profitableratecpm.com/ws7waxqy?key=ce86f810365211c634a1f1aed525f736" target="_blank" class="btn-green bounce-animation">📥 Download Video</a>
+                        </div>
+                        
+                        <div class="native-ad-container">
+                            <script async="async" data-cfasync="false" src="//pl26917078.profitableratecpm.com/16bf3c60c71aa096607ad9ef03e8fa98/invoke.js"></script>
+                            <div id="container-16bf3c60c71aa096607ad9ef03e8fa98"></div>
+                        </div>
+                        
+                        <div class="video-info">
+                            <h1 id="video-title" class="slide-in-left"></h1>
+                            <div class="video-meta">
+                                <div class="channel-info">
+                                    <div class="channel-avatar" id="channel-avatar"></div>
+                                    <div>
+                                        <p id="channel-name"></p>
+                                        <a href="https://www.profitableratecpm.com/ws7waxqy?key=ce86f810365211c634a1f1aed525f736" target="_blank"><p class="subscribers">1.2M subscribers</p></a>
+                                    </div>
+                                </div>
+                                <div class="action-buttons">
+                                    <a href="https://www.profitableratecpm.com/ws7waxqy?key=ce86f810365211c634a1f1aed525f736" target="_blank" class="btn-yellow hover-scale">Subscribe</a>
+                                    <a href="https://www.profitableratecpm.com/ws7waxqy?key=ce86f810365211c634a1f1aed525f736" target="_blank" class="btn-secondary hover-scale">👍 Like</a>
+                                    <a href="https://www.profitableratecpm.com/ws7waxqy?key=ce86f810365211c634a1f1aed525f736" target="_blank" class="btn-secondary hover-scale">👎 Dislike</a>
+                                    <a href="https://www.profitableratecpm.com/ws7waxqy?key=ce86f810365211c634a1f1aed525f736" target="_blank" class="btn-secondary hover-scale">💬 Comments</a>
+                                </div>
+                            </div>
+                            <div class="video-stats">
+                                <span id="video-views"></span>
+                                <span id="video-date"></span>
+                            </div>
+                            <p id="video-description" class="fade-in"></p>
+                        </div>
+                        
+                        <div class="content-break-ad">
+                            <div id="content-break-ad" class="ad-space" data-size="468x60">
+                                <script type="text/javascript">
+                                    atOptions = {
+                                        'key' : '750f82bb6dfa9c1950bb6b2f534e9100',
+                                        'format' : 'iframe',
+                                        'height' : 60,
+                                        'width' : 468,
+                                        'params' : {}
+                                    };
+                                </script>
+                                <script type="text/javascript" src="//www.highperformanceformat.com/750f82bb6dfa9c1950bb6b2f534e9100/invoke.js"></script>
+                            </div>
+                        </div>
+                        
+                        <div class="related-videos">
+                            <h2>Related Videos</h2>
+                            <div class="related-grid" id="related-grid">
+                                <!-- Related videos will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trending Page -->
+            <div id="trending-page" class="page">
+                <div class="content-wrapper">
+                    <a href="https://www.profitableratecpm.com/ws7waxqy?key=ce86f810365211c634a1f1aed525f736" target="_blank"><h1 class="page-title slide-in-right">🔥 Trending Videos</h1></a>
+                    
+                    <div class="page-top-ad">
+                        <div id="trending-top-ad" class="ad-space" data-size="728x90">
+                            <script type="text/javascript">
+                                atOptions = {
+                                    'key' : '23632d040e9ace3cb20615242d28bebd',
+                                    'format' : 'iframe',
+                                    'height' : 90,
+                                    'width' : 728,
+                                    'params' : {}
+                                };
+                            </script>
+                            <script type="text/javascript" src="//www.highperformanceformat.com/23632d040e9ace3cb20615242d28bebd/invoke.js"></script>
+                        </div>
+                    </div>
+                    <div class="video-grid" id="trending-grid"></div>
+                </div>
+            </div>
+
+            <!-- Subscriptions Page -->
+            <div id="subscriptions-page" class="page">
+                <div class="content-wrapper">
+                    <a href="https://www.profitableratecpm.com/ws7waxqy?key=ce86f810365211c634a1f1aed525f736" target="_blank"><h1 class="page-title slide-in-right">📺 Your Subscriptions</h1></a>
+                    
+                    <p>Subscribe to channels to see their latest videos here!</p>
+                    <button class="btn-yellow" onclick="window.open('https://www.profitableratecpm.com/ws7waxqy?key=ce86f810365211c634a1f1aed525f736', '_blank')" type="button">Find Channels to Subscribe</button>
+                </div>
+            </div>
+
+            <!-- Library Page -->
+            <div id="library-page" class="page">
+                <div class="content-wrapper">
+                    <a href="https://www.profitableratecpm.com/ws7waxqy?key=ce86f810365211c634a1f1aed525f736" target="_blank"><h1 class="page-title slide-in-right">📚 Your Library</h1></a>
+                    
+                    <p>Your saved videos and playlists will appear here!</p>
+                    <button class="btn-yellow" onclick="window.open('https://www.profitableratecpm.com/ws7waxqy?key=ce86f810365211c634a1f1aed525f736', '_blank')" type="button">Explore Videos</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
             <div class="footer-content">
+                <div class="footer-ads-container">
+                    <div id="footer-ads" class="ad-space footer-ad-space">
+                        <script type="text/javascript">
+                            atOptions = {
+                                'key' : '23632d040e9ace3cb20615242d28bebd',
+                                'format' : 'iframe',
+                                'height' : 90,
+                                'width' : 728,
+                                'params' : {}
+                            };
+                        </script>
+                        <script type="text/javascript" src="//www.highperformanceformat.com/23632d040e9ace3cb20615242d28bebd/invoke.js"></script>
+                    </div>
+                </div>
                 <div class="footer-info">
-                    <p>&copy; 2025 WrongHub. Share your moments with the world.</p>
+                    <p>&copy; 2025 Created by Myna. All rights reserved.</p>
                     <div class="footer-links">
                         <a href="https://www.profitableratecpm.com/ws7waxqy?key=ce86f810365211c634a1f1aed525f736" target="_blank">Privacy Policy</a>
                         <a href="https://www.profitableratecpm.com/ws7waxqy?key=ce86f810365211c634a1f1aed525f736" target="_blank">Terms of Service</a>
                         <a href="https://www.profitableratecpm.com/ws7waxqy?key=ce86f810365211c634a1f1aed525f736" target="_blank">Contact</a>
                     </div>
                 </div>
-                
-                <!-- Native Banner Ad -->
-                <div class="native-ad">
-                    <script async="async" data-cfasync="false" src="//pl26917078.profitableratecpm.com/16bf3c60c71aa096607ad9ef03e8fa98/invoke.js"></script>
-                    <div id="container-16bf3c60c71aa096607ad9ef03e8fa98"></div>
-                </div>
             </div>
-        </div>
-    </footer>
-
-    <!-- Photo Modal -->
-    <div id="photoModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <img id="modalImage" src="" alt="Full size photo">
-            <div class="modal-info">
-                <div class="modal-stats">
-                    <button id="modalLikeBtn" class="like-btn">
-                        <i class="fas fa-heart"></i>
-                        <span id="modalLikeCount">0</span>
-                    </button>
-                    <span id="modalUploadDate" class="upload-date"></span>
-                </div>
-            </div>
-        </div>
+        </footer>
     </div>
-
-    <!-- Toast Notifications -->
-    <div id="toast" class="toast"></div>
 
     <!-- Popunder and Social Bar Scripts -->
     <script type='text/javascript' src='//pl26917075.profitableratecpm.com/89/22/65/892265a32c6a746f8cd6827ec80659f2.js'></script>
     <script type='text/javascript' src='//pl26917089.profitableratecpm.com/b0/7a/be/b07abeb917e97c254f11b584a7665bb0.js'></script>
 
-    <!-- Main Script -->
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="ads.js"></script>
+    <script src="revenue-manager.js"></script>
+    <script src="popup-ad.js"></script>
+    <script src="video-manager.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
